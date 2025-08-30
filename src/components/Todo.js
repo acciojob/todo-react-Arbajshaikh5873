@@ -19,6 +19,12 @@ function Todo() {
     setTask("");
   }
 
+  function handleDeleteClick(id) {
+    setList((prevList) => 
+      prevList.filter((todo) => todo.id !== id)
+    );
+  }
+
   return (
     <div>
       <h1>To-Do List</h1>
@@ -29,7 +35,11 @@ function Todo() {
       />
       <button onClick={handleClick}>Add Todo</button>
       {list.map((todo) => (
-        <RenderTodo todo={todo} key={todo.id} />
+        <RenderTodo
+          todo={todo}
+          key={todo.id}
+          handleDeleteClick={handleDeleteClick}
+        />
       ))}
     </div>
   );
